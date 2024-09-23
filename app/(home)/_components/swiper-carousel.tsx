@@ -19,7 +19,7 @@ import gamePoster from "@/public/images/home/swiper-carousel/poster.png";
 const data = [
   {
     background: posterBg,
-    theme: "#FFF",
+    theme: "#33CCFF",
     poster: gamePoster,
     title: "Black Myth: Wukong",
     rating: 5,
@@ -118,6 +118,7 @@ const SwiperCarousel = () => {
           >
             {data.map(
               ({
+                theme,
                 poster,
                 title,
                 rating,
@@ -127,11 +128,15 @@ const SwiperCarousel = () => {
                 releaseDate,
               }) => (
                 <SwiperSlide key={title}>
-                  <div className="w-full h-fit p-[45px] pt-[25px] flex gap-x-[25px] font-primaryFont text-[13px] font-medium bg-gradient-to-tr from-[#116328] via-white/10 to-[#002304] backdrop-blur-md mt-[6%] relative">
-                    <div className="w-full h-[1px] absolute left-0 top-0 bg-gradient-to-r from-[#9DA8A0] to-[#9DA8A0] to-100%"></div>
-                    <div className="w-[1px] h-full absolute right-0 top-0 bg-gradient-to-b from-[#9DA8A0] to-[#00FF47] to-100%"></div>
-                    <div className="w-full h-[1px] absolute left-0 bottom-0 bg-gradient-to-r from-[#01FF48] to-[#00FF47] to-100%"></div>
-                    <div className="w-[1px] h-full absolute left-0 top-0 bg-gradient-to-b from-[#9DA8A0] to-[#01FF48] to-100%"></div>
+                  <div
+                    className={`w-full h-fit p-[45px] pt-[25px] flex gap-x-[25px] font-primaryFont text-[13px] font-medium backdrop-blur-md mt-[6%] relative`}
+                    style={{
+                      backgroundImage: `linear-gradient(to top right, ${theme}80 0%, #FFFFFF14 25%, #FFFFFF14 75%, ${theme}80 100%)`,
+                      borderImage: `linear-gradient(to bottom right, #9DA8A0 0%, ${theme} 100%) 1`,
+                      borderWidth: "1px",
+                      borderStyle: "solid",
+                    }}
+                  >
                     {/* Poster */}
                     <div className="relative w-[51%]">
                       <Image
