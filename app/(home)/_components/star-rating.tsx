@@ -7,7 +7,7 @@ interface StarRatingProps {
 
 const StarRating: React.FC<StarRatingProps> = ({ rating = 5 }) => {
   return (
-    <div className="flex items-center">
+    <div className="flex items-center gap-x-[0.2em]">
       {Array(rating)
         .fill(null)
         .map((_, index) => (
