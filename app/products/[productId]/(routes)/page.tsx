@@ -11,6 +11,9 @@ import {
 } from "@/components/ui/tooltip";
 
 import ImageCarousel from "../_components/image-carousel";
+import ReviewCard from "../_components/review-card";
+import RequirementsCard from "../_components/requirements-card";
+
 import bg from "@/public/images/product/bg.png";
 import paypalLogo from "@/public/images/product/paypal-logo.png";
 import wishlist from "@/public/images/product/wishlist.png";
@@ -26,7 +29,7 @@ import paypal from "@/public/images/product/paypal.png";
 import visa from "@/public/images/product/visa.png";
 import mastercard from "@/public/images/product/mastercard.png";
 import skrill from "@/public/images/product/skrill.png";
-import RequirementsCard from "../_components/requirements-card";
+import samplePic from "@/public/images/sample-pic.png";
 
 const gameData = {
   image: bg,
@@ -75,6 +78,39 @@ const gameData = {
     },
   },
 };
+
+const reviews = [
+  {
+    avatar: samplePic,
+    username: "Gamer 1",
+    fullname: "John Doe",
+    title: "Incredibly fun game. Worth it!",
+    content:
+      "It's beautiful, frantic, challenging, and a delight to play It's beautiful, frantic, challenging, and a delight to play It's beautiful, frantic, challenging, and a delight to play",
+    date: "March 29, 2024",
+    rating: 5,
+  },
+  {
+    avatar: samplePic,
+    username: "Gamer 2",
+    fullname: "John Doe",
+    title: "Incredibly fun game. Worth it!",
+    content:
+      "It's beautiful, frantic, challenging, and a delight to play It's beautiful, frantic, challenging, and a delight to play It's beautiful, frantic, challenging, and a delight to play",
+    date: "March 29, 2024",
+    rating: 4,
+  },
+  {
+    avatar: samplePic,
+    username: "Gamer 3",
+    fullname: "John Doe",
+    title: "Incredibly fun game. Worth it!",
+    content:
+      "It's beautiful, frantic, challenging, and a delight to play It's beautiful, frantic, challenging, and a delight to play It's beautiful, frantic, challenging, and a delight to play",
+    date: "March 29, 2024",
+    rating: 5,
+  },
+];
 
 export default function page() {
   const calDiscountPercentage = () => {
@@ -327,8 +363,61 @@ export default function page() {
             </h3>
             <RequirementsCard requirements={gameData.requirements} />
           </div>
+
+          {/* User reviews */}
+          <div className=" text-[28px]">
+            <h3 className="font-semibold capitalize pt-[3em]">User Reviews</h3>
+            <hr className="my-[1em]" />
+            {/* Review button area */}
+            <div className="text-[24px] flex items-center gap-x-[10em] mb-[1.5em]">
+              <div>
+                <StarRating rating={5} />
+                <Button
+                  variant="outline"
+                  className="text-white text-[1em] py-[1.2em] px-[1em] mt-[0.5em] rounded-none"
+                >
+                  &#43; Add your review
+                </Button>
+              </div>
+              <div>
+                <p className="flex leading-tight my-[0.6em]">
+                  <span className="text-[#f29d38]">
+                    <StarRating rating={1} />
+                  </span>
+                  &nbsp;{gameData.rating}/5
+                </p>
+                <p>Overall Rating</p>
+              </div>
+            </div>
+            {/* Review card */}
+            <div>
+              {reviews.map(
+                ({
+                  avatar,
+                  username,
+                  fullname,
+                  title,
+                  content,
+                  date,
+                  rating,
+                }) => (
+                  <ReviewCard
+                    key={username}
+                    avatar={avatar}
+                    username={username}
+                    fullname={fullname}
+                    title={title}
+                    content={content}
+                    date={date}
+                    rating={rating}
+                  />
+                )
+              )}
+            </div>
+          </div>
+
           {/* Recommended */}
-          <div className="h-[250px]"></div>
+          <div className="h-[550px]"></div>
         </div>
       </div>
     </section>

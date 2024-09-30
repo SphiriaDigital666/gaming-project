@@ -87,7 +87,7 @@ const RequirementsCard: React.FC<RequirementsCardProps> = ({
           High
         </button>
       </div>
-      <div className="text-[20px] py-[5em] px-[10%]">
+      <div className="text-[20px] pt-[5em] px-[10%]">
         <div className="grid grid-cols-2 pb-[3em]">
           <p className="font-bold">Operating System</p>
           <p className="font-medium">{activeSection.sectionData.os}</p>
