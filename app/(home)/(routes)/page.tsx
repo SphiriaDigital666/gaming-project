@@ -12,6 +12,7 @@ import IconBar from "../_components/icon-bar";
 import ContactBar from "@/app/contact-bar/contact-bar";
 import ProductSearchBar from "@/components/product-search/product-search";
 import Navbar from "@/components/navbar/navbar";
+import BestSelling from "../_components/best-selling";
 
 export default function Home() {
   return (
@@ -54,6 +55,7 @@ export default function Home() {
       </div>
       <IconBar />
       <SwiperCarousel />
+      <BestSelling />
       <Catalog />
       <VerticalCarousel />
       <Footer />
