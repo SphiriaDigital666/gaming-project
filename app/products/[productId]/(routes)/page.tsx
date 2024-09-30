@@ -134,9 +134,11 @@ export default function ProductPage() {
       <ProductSearchBar />
       <Navbar />
       <section className="bg-[#051301] font-primaryFont">
-        <div className="relative">
+        <div
+          className="relative h-[480px] bg-contain bg-[0px_-160px] bg-no-repeat bg-fixed"
+          style={{ backgroundImage: `url(${gameData.image.src})` }}
+        >
           <div className="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-black to-transparent"></div>
-          <Image src={gameData.image} alt="Image background" />
           <div className="absolute bottom-0 left-0 right-0 container mx-auto flex justify-end">
             {/* Price card */}
             <div
@@ -348,7 +350,7 @@ export default function ProductPage() {
             </div>
 
             {/* Recommended */}
-            {/* <div className="h-[150px]">Recommended Section</div> */}
+            <div className="h-[150px]">Recommended Section</div>
 
             {/* About */}
             <div>
