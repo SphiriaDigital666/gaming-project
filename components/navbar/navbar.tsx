@@ -75,7 +75,9 @@ const categories = [
 
 export default function Navbar() {
   const path = usePathname();
-  const [isCategoryMenuToggled, setIsCategoryMenuToggled] = useState(false);
+  const [isCategoryMenuToggled, setIsCategoryMenuToggled] = useState<
+    boolean | undefined
+  >(undefined);
   const [isMobileNavToggled, setIsMobileNavToggled] = useState(false);
 
   const [isMenuOneVisible, setIsMenuOneVisible] = useState(true);
@@ -96,7 +98,9 @@ export default function Navbar() {
     setIsMenuThreeVisible(true);
     const categoryData = categories.find((c) => c.categoryName === category);
     if (categoryData && subMenu in categoryData) {
-      setSubMenuData(categoryData[subMenu as keyof typeof categoryData] as string[]);
+      setSubMenuData(
+        categoryData[subMenu as keyof typeof categoryData] as string[]
+      );
     }
   };
 
@@ -106,7 +110,12 @@ export default function Navbar() {
         {/* Categories button */}
         <button
           className="font-semibold text-[15px] capitalize bg-[#23262B] flex items-center gap-[0.4em] px-[0.8em] py-[0.4em] my-[0.5em]"
-          onClick={() => setIsCategoryMenuToggled((prev) => !prev)}
+          onClick={() => {
+            if (isCategoryMenuToggled === undefined) {
+              return setIsCategoryMenuToggled(true);
+            }
+            setIsCategoryMenuToggled((prev) => !prev);
+          }}
         >
           <div className="space-y-[0.2em] pe-[0.1em]">
             <div className="w-[1.2em] h-0.5 bg-white"></div>
@@ -190,7 +199,9 @@ export default function Navbar() {
         className={`${
           isCategoryMenuToggled
             ? "animate-category-menu"
-            : "reverse-animate-category-menu"
+            : isCategoryMenuToggled === false
+            ? "reverse-animate-category-menu"
+            : "hidden"
         } origin-left absolute z-10 w-full sm:w-[400px] min-h-[80vh] bg-[#0D0F10] border border-[#75F94C] font-semibold text-[18px] p-[2em]`}
       >
         {/* Main category menu */}
