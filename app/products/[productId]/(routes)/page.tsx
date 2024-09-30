@@ -9,6 +9,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { FaAngleRight } from "react-icons/fa6";
 
 import ImageCarousel from "../_components/image-carousel";
 import ReviewCard from "../_components/review-card";
@@ -82,7 +83,7 @@ const gameData = {
 const reviews = [
   {
     avatar: samplePic,
-    username: "Gamer 1",
+    username: "The Gamer",
     fullname: "John Doe",
     title: "Incredibly fun game. Worth it!",
     content:
@@ -92,7 +93,7 @@ const reviews = [
   },
   {
     avatar: samplePic,
-    username: "Gamer 2",
+    username: "The Gamer 2",
     fullname: "John Doe",
     title: "Incredibly fun game. Worth it!",
     content:
@@ -102,7 +103,7 @@ const reviews = [
   },
   {
     avatar: samplePic,
-    username: "Gamer 3",
+    username: "The Gamer 3",
     fullname: "John Doe",
     title: "Incredibly fun game. Worth it!",
     content:
@@ -369,7 +370,7 @@ export default function page() {
             <h3 className="font-semibold capitalize pt-[3em]">User Reviews</h3>
             <hr className="my-[1em]" />
             {/* Review button area */}
-            <div className="text-[24px] flex items-center gap-x-[10em] mb-[1.5em]">
+            <div className="text-[0.6em] flex items-center gap-x-[10em] mb-[1.5em]">
               <div>
                 <StarRating rating={5} />
                 <Button
@@ -390,7 +391,7 @@ export default function page() {
               </div>
             </div>
             {/* Review card */}
-            <div>
+            <div className="flex justify-between flex-wrap gap-y-[2em]">
               {reviews.map(
                 ({
                   avatar,
@@ -413,6 +414,14 @@ export default function page() {
                   />
                 )
               )}
+            </div>
+            <div className="flex justify-end">
+              <Button
+                variant="gaming"
+                className="text-[0.6em] px-[1em] py-[0.5em] h-fit"
+              >
+                See More <FaAngleRight />
+              </Button>
             </div>
           </div>
 
