@@ -29,11 +29,11 @@ const AdminPanel: React.FC = () => {
       if (parsedUser.role.name === "ADMIN") {
         setIsAuthorized(true);
       } else {
-        toast.error('You Are Not Admin')
+        toast.error("You Are Not Admin");
         router.push("/"); // Redirect if not admin
       }
     } else {
-      toast.error('You Are Not Admin')
+      toast.error("You Are Not Admin");
       router.push("/sign-in"); // Redirect if no user found
     }
   }, [router]);
@@ -86,11 +86,9 @@ const AdminPanel: React.FC = () => {
 
   return (
     <RoleProvider>
-      <div className="flex bg-[#0A0A0B]">
+      <div className="relative flex bg-[#0A0A0B] overflow-hidden before:w-[500px] before:h-[500px] before:absolute before:left-[150px] before:-bottom-[150px] before:bg-[#00FFA1] before:opacity-20 before:rounded-full before:blur-[100px] after:w-[500px] after:h-[500px] after:absolute after:-right-[150px] after:-top-[150px] after:bg-[#00FFA1] after:opacity-20 after:rounded-full after:blur-[100px]">
         <Sidebar onSelect={handleSelect} />
-        <div className="relative flex-1 overflow-hidden h-screen before:w-[500px] before:h-[500px] before:absolute before:-z-10 before:left-[150px] before:-bottom-[150px] before:bg-[#00FFA1] before:opacity-20 before:rounded-full before:blur-[100px] after:w-[500px] after:h-[500px] after:absolute after:-z-10 after:-right-[150px] after:-top-[150px] after:bg-[#00FFA1] after:opacity-20 after:rounded-full after:blur-[100px]">
-          {renderContent()}
-        </div>
+        <div className="flex-1 overflow-y-scroll z-10">{renderContent()}</div>
       </div>
     </RoleProvider>
   );
