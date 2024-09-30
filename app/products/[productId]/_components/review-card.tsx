@@ -28,7 +28,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
         <div>
           <Image
             src={avatar}
-            alt="Name"
+            alt={username}
             className="size-[4.5em] rounded-full"
           />
         </div>
