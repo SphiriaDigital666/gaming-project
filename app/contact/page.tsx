@@ -65,7 +65,7 @@ function ContactPage() {
                   <Image
                     src={icon}
                     alt={title}
-                    className="size-[14px] min-[530px]:size-[19px] sm:size-[24px] md:size-[36px] lg:size-[48px] xl:size-[54px] 2xl:size-[60px] group-hover:-translate-y-[2px] transition-transform duration-200"
+                    className="size-[14px] font-bold min-[530px]:size-[19px] sm:size-[24px] md:size-[36px] lg:size-[48px] xl:size-[54px] 2xl:size-[60px] group-hover:-translate-y-[2px] transition-transform duration-200"
                   />
                   <p className="text-[8px] font-medium min-[530px]:text-[8px] sm:text-[9px] md:text-[11px] lg:text-[24px] group-hover:scale-110 transition-transform duration-200">
                     {title}
@@ -82,11 +82,11 @@ function ContactPage() {
           </div>
         </div>
 
-        <div className="absolute z-50 flex-1 w-full px-8 pt-48">
+        <div className="absolute z-50 flex-1 w-full px-8 pt-48 lg:pt-72">
           <ContactForm />
         </div>
 
-        <div className="absolute w-full h-[158px]  px-8 mt-[750px] z-50">
+        <div className="absolute w-full h-[158px]  px-8 mt-[750px] lg:mt-[850px] z-50">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345093795!2d144.95373541547944!3d-37.81627944202161!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0x5045675218ce7e0!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2slk!4v1602773587239!5m2!1sen!2slk"
             width="100%"
