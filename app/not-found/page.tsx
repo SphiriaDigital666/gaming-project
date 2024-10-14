@@ -22,7 +22,6 @@ function NotFound() {
           className="w-full h-full z-0"
         />
 
-        {/* Flex container for the 404 and ERROR text */}
         <div className="absolute inset-0 flex flex-col lg:flex-row items-center justify-center lg:gap-x-8 z-20">
           <h1 className="text-[96px] md:text-[145px] lg:text-[80px] xl:text-[94px] 2xl:text-[94px] leading-none">
             404

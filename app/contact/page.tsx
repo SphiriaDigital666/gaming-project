@@ -1,7 +1,99 @@
-import React from "react";
+import ProductSearchBar from "@/components/product-search/product-search";
+import Image from "next/image";
+import cardBgOne from "@/public/images/contact-page/card-bg-one.png";
+import Gmail from "@/public/images/contact-page/Gmail Logo.png";
+import iPhone from "@/public/images/contact-page/iPhone SE.png";
+import Region from "@/public/images/contact-page/Region.png";
+import Footer from "@/components/footer/footer";
+import { montserrat } from "@/lib/fonts";
+import ContactForm from "@/components/contant/ContactForm";
+const cards = [
+  { title: "Phone", icon: iPhone, body: "+94 765463214" },
+  {
+    title: "Address",
+    icon: Region,
+    body: `132, My Street, Kingston, 
+New York 12401.`,
+  },
+  { title: "Web", icon: Gmail, body: "gamespire@gmaio.com" },
+];
 
 function ContactPage() {
-  return <div>ContactPage</div>;
+  return (
+    <div className={montserrat.className}>
+      <ProductSearchBar />
+      <div className="relative w-full h-[162px] lg:h-[420px] xl:h-[420px] 2xl:h-[420px]">
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-100 z-10"></div>
+
+        <Image
+          src={cardBgOne}
+          alt="Not found background"
+          layout="fill"
+          objectFit="cover"
+          className="w-full h-full z-0"
+        />
+        {/* Title */}
+        <div className="container mx-auto px-[32px] absolute items-center justify-center inset-0 pt-[75px] md:pt-[50px] lg:pt-52 z-20">
+          <div className="text-[18px] uppercase font-medium w-fit mx-auto mb-[2.3em] text-center sm:text-[22px] md:text-[26px] lg:text-[29px] xl:text-[31px] 2xl:text-[33px]">
+            <p className="text-[#0BDB45] translate-y-[55%] text-[11px] sm:lg:text-[15px] md:text-[15px] lg:text-[20px]">
+              Home / Contact
+            </p>
+            <p
+              className="font-bold text-[1.2em] border-[#0BDB45] border-[0.1em] px-[1em] py-[0.5em]"
+              style={{
+                clipPath:
+                  "polygon(0% 0%, 15% 0%, 15% 5%, 85% 5%, 85% 0%, 100% 0%, 100% 100%, 65% 100%, 65% 95%, 35% 95%, 35% 100%, 0% 100%)",
+              }}
+            >
+              Contact Page
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="relative bg-[#051301] w-full h-screen flex items-start justify-center text-center pt-2 lg:pt-8">
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent opacity-100"></div>
+        <div className="items-center justify-center text-center z-50">
+          <p className="text-[10px] lg:text-[28px]">Get in touch with us !</p>
+          <div className="flex items-center justify-around p-8 gap-x-[30px] md:gap-x-10 lg:gap-x-20 text-center w-full">
+            {cards.map(({ title, icon, body }, i) => (
+              <>
+                <div
+                  key={title}
+                  className="flex flex-col items-center group space-y-2"
+                >
+                  <Image
+                    src={icon}
+                    alt={title}
+                    className="size-[14px] min-[530px]:size-[19px] sm:size-[24px] md:size-[36px] lg:size-[48px] xl:size-[54px] 2xl:size-[60px] group-hover:-translate-y-[2px] transition-transform duration-200"
+                  />
+                  <p className="text-[8px] font-medium min-[530px]:text-[8px] sm:text-[9px] md:text-[11px] lg:text-[24px] group-hover:scale-110 transition-transform duration-200">
+                    {title}
+                  </p>
+                  <p className="whitespace-pre-line text-[7px] lg:text-[18px]">
+                    {body}
+                  </p>
+                </div>
+                {i !== 2 && (
+                  <div className="w-px lg:w-2px h-[40px] bg-white opacity-50 -translate-y-[25%] lg:h-[90px]"></div>
+                )}
+              </>
+            ))}
+          </div>
+        </div>
+
+        <div className="absolute z-50 flex-1 w-full px-8 pt-48">
+          <ContactForm />
+        </div>
+
+        {/* Bottom gradient */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent opacity-100"></div>
+      </div>
+
+      {/* Form */}
+      <Footer />
+    </div>
+  );
 }
 
 export default ContactPage;
