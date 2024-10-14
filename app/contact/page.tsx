@@ -86,6 +86,19 @@ function ContactPage() {
           <ContactForm />
         </div>
 
+        <div className="absolute w-full h-[158px]  px-8 mt-[750px] z-50">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345093795!2d144.95373541547944!3d-37.81627944202161!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0x5045675218ce7e0!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2slk!4v1602773587239!5m2!1sen!2slk"
+            width="100%"
+            height="100%"
+            frameBorder="0"
+            style={{ border: 0 }}
+            allowFullScreen={true}
+            aria-hidden="false"
+            // tabIndex="0"
+          ></iframe>
+        </div>
+
         {/* Bottom gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent opacity-100"></div>
       </div>

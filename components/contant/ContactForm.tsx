@@ -57,7 +57,7 @@ export default function ContactForm() {
                 <Input
                   placeholder="Name"
                   {...field}
-                  className="bg-white bg-opacity-[10%] text-white rounded-none border-none"
+                  className="bg-white bg-opacity-[10%] text-white rounded-none border-none placeholder:text-slate-300"
                 />
               </FormControl>
               <br />
@@ -66,14 +66,14 @@ export default function ContactForm() {
                 <Input
                   placeholder="Email"
                   {...field}
-                  className="bg-white bg-opacity-[10%] text-white rounded-none border-none"
+                  className="bg-white bg-opacity-[10%] text-white rounded-none border-none placeholder:text-slate-300"
                 />
               </FormControl>
               <br />
               <FormLabel>Message</FormLabel>
               <Textarea
                 placeholder="Message"
-                className="bg-white bg-opacity-[10%] text-white rounded-none border-none"
+                className="bg-white bg-opacity-[10%] text-white rounded-none border-none placeholder:text-slate-300"
               />
               <br />
             </FormItem>
