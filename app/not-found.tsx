@@ -10,7 +10,7 @@ function NotFound() {
       className={`relative bg-cover bg-center transition-all duration-1000 ease-in-out font-primaryFont font-semibold text-white`}
     >
       <ProductSearchBar />
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="relative w-full h-[1080px] lg:h-[560px] xl:h-[560px] 2xl:h-[560px]">
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-100 z-10"></div>
 
