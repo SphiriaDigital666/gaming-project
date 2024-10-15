@@ -4,6 +4,7 @@ import { DataTable } from "./all-products/data-table";
 import AddProducts from "./all-products/AddProducts";
 import EditAllProductsPopup from "./all-products/EditAllProductsPopup";
 import { ColumnDef } from "@tanstack/react-table";
+import axiosInstance from "@/axios/axiosInstance";
 
 function getInitialData(): AllProductsNew[] {
   return [
@@ -17,6 +18,22 @@ function getInitialData(): AllProductsNew[] {
       regular_price: "$60",
       status: "Public",
       date: "23/05/2024",
+      displayName: "Wukong",
+      about: "",
+      cardDescription: "",
+      language: "",
+      icon: "",
+      saleQuantity: 0,
+      coverImage: "",
+      galleryImages: [],
+      latestImage: "",
+      cardImage: "",
+      videoUrl: "",
+      addToLatestGame: false,
+      carousel: false,
+      displayLatestGame: false,
+      platform: "",
+      brand: ""
     },
     {
       imageUrl: "/images/sample-pic.png",
@@ -28,6 +45,22 @@ function getInitialData(): AllProductsNew[] {
       regular_price: "$60",
       status: "Public",
       date: "23/05/2024",
+      displayName: "UFO 50",
+      about: "",
+      cardDescription: "",
+      language: "",
+      icon: "",
+      saleQuantity: 0,
+      coverImage: "",
+      galleryImages: [],
+      latestImage: "",
+      cardImage: "",
+      videoUrl: "",
+      addToLatestGame: false,
+      carousel: false,
+      displayLatestGame: false,
+      platform: "",
+      brand: ""
     },
   ];
 }
@@ -39,8 +72,48 @@ export default function AllProducts() {
     null
   );
 
-  const handleAddProduct = (newProduct: AllProductsNew) => {
+  const handleAddProduct = async (newProduct: AllProductsNew) => {
+    console.log("ffgfgf", newProduct);
     setProducts((prevProducts) => [...prevProducts, newProduct]);
+    const data = {
+      productName: newProduct.name,
+      displayName: newProduct.displayName,
+      aboutThisGame: newProduct.about,
+      cardDescription: newProduct.cardDescription,
+      system: newProduct.icon,
+      languages: newProduct.language ? [newProduct.language] : [],
+      releaseDate: new Date(newProduct.date).toISOString(),
+      regularPrice: parseFloat(newProduct.regular_price.replace("$", "")),
+      sellingPrice: parseFloat(newProduct.selling_price.replace("$", "")),
+      stock: parseInt(newProduct.stock),
+      SKU: newProduct.sku,
+      stockStatus: newProduct.stock === "In Stock" ? "IN_STOCK" : "OUT_OF_STOCK",
+      minimumOS: "",
+      minimumCPU: "",
+      minimumRAM: "",
+      minimumGPU: "",
+      minimumStorage: "",
+      recommendedOS: "",
+      recommendedCPU: "",
+      recommendedRAM: "",
+      recommendedGPU: "",
+      recommendedStorage: "",
+      coverImage: newProduct.coverImage,
+      screenshots: newProduct.galleryImages,
+      video: newProduct.videoUrl,
+      cardImage: newProduct.cardImage,
+      labelImage: newProduct.icon,
+      addToLatestGames: newProduct.addToLatestGame,
+      addToCarousel: newProduct.carousel,
+      displayInLatesGames: newProduct.displayLatestGame,
+      published: newProduct.status === "Public",
+      categoryIds: [],
+      tagIds: [],
+      brandId: newProduct.brand,
+      platformId: newProduct.platform,
+    };
+
+    await axiosInstance.post("/games", data);
   };
 
   const handleDeleteProduct = (id: string) => {

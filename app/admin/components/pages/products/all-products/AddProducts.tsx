@@ -37,9 +37,21 @@ export default function AddProducts({ onAddProduct }: AddProductsProps) {
   const [sku, setSku] = useState("");
   const [stock, setStock] = useState("");
 
-  // Other states
-  const [status, setStatus] = useState("Public");
+  //image data inputs
   const [imageUrl, setImageUrl] = useState("");
+  const [coverImage, setCoverImage] = useState("");
+  const [videoUrl, setVideoUrl] = useState("");
+  const [galleryImages, setGalleryImages] = useState<string[]>([]);
+  const [cardImage, setCardImage] = useState("");
+  const [latestImage, setLatestImage] = useState("");
+  const [addToLatestGame, setAddToLatestGame] = useState(false);
+  const [carousel, setCarousel] = useState(false);
+  const [displayLatestGame, setDisplayLatestGame] = useState(false);
+
+  // Other states
+  const [status, setStatus] = useState("Public");// Initialize with a valid Platforms value if needed
+  const [platform, setPlatform] = useState("");
+  const [brand, setBrand] = useState("");
 
   /* const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -93,6 +105,16 @@ export default function AddProducts({ onAddProduct }: AddProductsProps) {
       icon,
       language,
       saleQuantity,
+      coverImage,
+      videoUrl,
+      galleryImages,
+      latestImage,
+      cardImage,
+      addToLatestGame,
+      carousel,
+      displayLatestGame,
+      platform,
+      brand
     };
   
     console.log(newProduct, 'newProduct');
@@ -159,11 +181,28 @@ export default function AddProducts({ onAddProduct }: AddProductsProps) {
           />
         </div>
 
-        {/* <div>
-          <ProductImages />
-        </div> */}
+        <div>
+          <ProductImages 
+            coverImage={coverImage}
+            setCoverImage={setCoverImage}
+            videoUrl={videoUrl}
+            setVideoUrl={setVideoUrl}
+            galleryImages={galleryImages}
+            setGalleryImages={setGalleryImages}
+            latestImage={latestImage}
+            setLatestImage={setLatestImage}
+            cardImage={cardImage}
+            setCardImage={setCardImage}
+            addToLatestGame={addToLatestGame}
+            setAddToLatestGame={setAddToLatestGame}
+            carousel={carousel}
+            setCarousel={setCarousel}
+            displayLatestGame={displayLatestGame}
+            setDisplayLatestGame={setDisplayLatestGame}
+          />
+        </div>
 
-        <div className="mt-[2em] mb-[1.5em]">
+        {/* <div className="mt-[2em] mb-[1.5em]">
           <label className="block mb-[0.5em]">Image URL</label>
           <input
             type="text"
@@ -172,9 +211,9 @@ export default function AddProducts({ onAddProduct }: AddProductsProps) {
             className="w-full bg-transparent px-[1em] py-[0.5em] text-white border border-[#606060] rounded-sm"
             required
           />
-        </div>
+        </div> */}
 
-        {/* <SystemRequirements /> */}
+        <SystemRequirements />
       </div>
 
       {/* Dropdown area */}
@@ -219,7 +258,10 @@ export default function AddProducts({ onAddProduct }: AddProductsProps) {
           </div>
 
           <div className="mb-10">
-            <BrandCategories />
+            <BrandCategories
+              brand={brand}
+              setBrand={setBrand}
+            />
           </div>
 
           <div className="mb-10">
@@ -227,7 +269,10 @@ export default function AddProducts({ onAddProduct }: AddProductsProps) {
           </div>
 
           <div className="mb-10">
-            <PlatformCategories />
+            <PlatformCategories 
+              platform={platform}
+              setPlatform={setPlatform}
+            />
           </div>
         </div>
       </div>
