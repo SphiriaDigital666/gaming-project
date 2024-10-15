@@ -7,6 +7,12 @@ import Region from "@/public/images/contact-page/Region.png";
 import Footer from "@/components/footer/footer";
 import { montserrat } from "@/lib/fonts";
 import ContactForm from "@/components/contant/ContactForm";
+import Link from "next/link";
+import { FaFacebook, FaTiktok } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { IoLogoInstagram } from "react-icons/io5";
+import Navbar from "@/components/navbar/navbar";
+
 const cards = [
   { title: "Phone", icon: iPhone, body: "+94 765463214" },
   {
@@ -22,7 +28,8 @@ function ContactPage() {
   return (
     <div className={montserrat.className}>
       <ProductSearchBar />
-      <div className="relative w-full h-[162px] lg:h-[420px] xl:h-[420px] 2xl:h-[420px]">
+      {/* <Navbar /> */}
+      <div className="relative w-full h-[162px] lg:h-[420px] xl:h-[420px] 2xl:h-[420px] px-8">
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-100 z-10"></div>
 
         <Image
@@ -51,55 +58,84 @@ function ContactPage() {
         </div>
       </div>
 
-      <div className="relative bg-[#051301] w-full h-screen flex items-start justify-center text-center pt-2 lg:pt-8">
+      <div className="relative bg-[#051301]">
         <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent opacity-100"></div>
-        <div className="items-center justify-center text-center z-50">
-          <p className="text-[10px] lg:text-[28px]">Get in touch with us !</p>
-          <div className="flex items-center justify-around p-8 gap-x-[30px] md:gap-x-10 lg:gap-x-20 text-center w-full">
-            {cards.map(({ title, icon, body }, i) => (
-              <>
-                <div
-                  key={title}
-                  className="flex flex-col items-center group space-y-2"
-                >
-                  <Image
-                    src={icon}
-                    alt={title}
-                    className="size-[14px] font-bold min-[530px]:size-[19px] sm:size-[24px] md:size-[36px] lg:size-[48px] xl:size-[54px] 2xl:size-[60px] group-hover:-translate-y-[2px] transition-transform duration-200"
-                  />
-                  <p className="text-[8px] font-medium min-[530px]:text-[8px] sm:text-[9px] md:text-[11px] lg:text-[24px] group-hover:scale-110 transition-transform duration-200">
-                    {title}
-                  </p>
-                  <p className="whitespace-pre-line text-[7px] lg:text-[18px]">
-                    {body}
-                  </p>
-                </div>
-                {i !== 2 && (
-                  <div className="w-px lg:w-2px h-[40px] bg-white opacity-50 -translate-y-[25%] lg:h-[90px]"></div>
-                )}
-              </>
-            ))}
+        <div className="container mx-auto w-full h-full items-start  text-center pt-2 lg:pt-8">
+          <div className="items-center justify-center text-center relative z-50">
+            <div className="flex flex-col items-center justify-center">
+              <p className="text-[10px]  md:text-[15px] lg:text-[20px]  xl:text-[28px]">
+                Get in touch with us !
+              </p>
+              <div className="flex items-center justify-center p-8 gap-x-[20px] md:gap-x-10 lg:gap-x-15 xl:gap-x-20 text-center w-fit">
+                {cards.map(({ title, icon, body }, i) => (
+                  <>
+                    <div
+                      key={title}
+                      className="flex flex-col items-center group space-y-1"
+                    >
+                      <Image
+                        src={icon}
+                        alt={title}
+                        className="size-[14px] font-bold min-[530px]:size-[19px] sm:size-[24px] md:size-[36px] lg:size-[40px] xl:size-[54px] 2xl:size-[60px] group-hover:-translate-y-[2px] transition-transform duration-200"
+                      />
+                      <p className="text-[8px] font-medium min-[530px]:text-[8px] sm:text-[9px] md:text-[11px] lg:text-[24px] group-hover:scale-110 transition-transform duration-200">
+                        {title}
+                      </p>
+                      <p className="whitespace-pre-line text-[7px] lg:text-[18px]">
+                        {body}
+                      </p>
+                    </div>
+                    {i !== 2 && (
+                      <div className="w-px lg:w-2px h-[40px] bg-white opacity-50 -translate-y-[25%] lg:h-[90px]"></div>
+                    )}
+                  </>
+                ))}
+              </div>
+            </div>
+
+            <div className="z-50 flex-1 w-full px-8  lg:mt-24 xl:mt-36 2xl:mt-36">
+              <ContactForm />
+            </div>
+
+            <div className="flex flex-col items-center m-[1em] lg:m-[2em] xl:m-[2em]">
+              <ul className="flex gap-x-[1.14em] mt-[0.8em]">
+                <li className="w-fit hover:scale-110">
+                  <Link href="/">
+                    <FaFacebook className="size-[1.4em] lg:size-[2em]" />
+                  </Link>
+                </li>
+                <li className="w-fit hover:scale-110">
+                  <Link href="/">
+                    <FaXTwitter className="size-[1.4em] lg:size-[2em]" />
+                  </Link>
+                </li>
+                <li className="w-fit hover:scale-110">
+                  <Link href="/">
+                    <IoLogoInstagram className="size-[1.45em] lg:size-[2em]" />
+                  </Link>
+                </li>
+                <li className="w-fit hover:scale-110">
+                  <Link href="/">
+                    <FaTiktok className="size-[1.4em] lg:size-[2em]" />
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div className="w-full h-[158px] lg:h-[365px] z-50 pb-[2em] px-8">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345093795!2d144.95373541547944!3d-37.81627944202161!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0x5045675218ce7e0!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2slk!4v1602773587239!5m2!1sen!2slk"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                aria-hidden="false"
+              ></iframe>
+            </div>
           </div>
-        </div>
 
-        <div className="absolute z-50 flex-1 w-full px-8 pt-48 lg:pt-72">
-          <ContactForm />
+          {/* Bottom gradient */}
         </div>
-
-        <div className="absolute w-full h-[158px]  px-8 mt-[750px] lg:mt-[850px] z-50">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345093795!2d144.95373541547944!3d-37.81627944202161!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0x5045675218ce7e0!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2slk!4v1602773587239!5m2!1sen!2slk"
-            width="100%"
-            height="100%"
-            frameBorder="0"
-            style={{ border: 0 }}
-            allowFullScreen={true}
-            aria-hidden="false"
-            // tabIndex="0"
-          ></iframe>
-        </div>
-
-        {/* Bottom gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent opacity-100"></div>
       </div>
 

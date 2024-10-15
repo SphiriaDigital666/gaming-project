@@ -1,92 +1,87 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-// import { toast } from "@/components/hooks/use-toast";
 import { Button } from "@/components/ui/button";
-import {
-  Form as UIForm,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { Textarea } from "../ui/textarea";
-
-// Form validation schema
-const FormSchema = z.object({
-  username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
-});
+import Image from "next/image";
+import Rectangle from "@/public/images/contact-page/Rectangle.png";
+import Avatar from "@/public/images/contact-page/avatar.png";
 
 export default function ContactForm() {
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
-    defaultValues: {
-      username: "",
-    },
-  });
-
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log(data);
-  }
-
   return (
-    <UIForm {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="bg-white bg-opacity-[6%] p-6 text-left"
-      >
-        <p className="text-green-400 text-sm">Need Some Help?</p>
-        <h2 className="text-xl font-bold pb-2">Get In Touch</h2>
-        <p className="text-sm mb-6">
-          Whatever your question we are here to help
-        </p>
-        <FormField
-          control={form.control}
-          name="username"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Name</FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="Name"
-                  {...field}
-                  className="bg-white bg-opacity-[10%] text-white rounded-none border-none placeholder:text-slate-300"
-                />
-              </FormControl>
-              <br />
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="Email"
-                  {...field}
-                  className="bg-white bg-opacity-[10%] text-white rounded-none border-none placeholder:text-slate-300"
-                />
-              </FormControl>
-              <br />
-              <FormLabel>Message</FormLabel>
-              <Textarea
-                placeholder="Message"
-                className="bg-white bg-opacity-[10%] text-white rounded-none border-none placeholder:text-slate-300"
-              />
-              <br />
-            </FormItem>
-          )}
+    <div className="relative">
+      <div className="hidden lg:block absolute inset-0 lg:bg-opacity-10 z-[-1]">
+        <Image
+          src={Rectangle}
+          alt="Rectangle Background"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ opacity: 0.2 }}
         />
-        <Button
-          variant="gaming"
-          type="submit"
-          className="flex-1 font-bold bg-[#0BDB45] text-center rounded-none cursor-pointer w-full text-black "
-        >
-          SEND
-        </Button>
-      </form>
-    </UIForm>
+      </div>
+
+      {/* Form */}
+      <div className="bg-white bg-opacity-[6%] p-6 text-left lg:py-[84px] relative">
+        <div className="lg:ml-[8em] xl:ml-[10em] lg:w-2/5">
+          <p className="text-green-400 text-[7px] md:text-[10px] lg:text-[15px] xl:text-[17px]">
+            Need Some Help?
+          </p>
+          <h2 className="text-[13px] md:text-[20px] lg:text-[25px] xl:text-[30px] font-bold pb-[0.5em]">
+            Get In Touch
+          </h2>
+          <p className="text-[7px] md:text-[10px] lg:text-[15px] xl:text-[17px] mb-[1em]">
+            Whatever your question we are here to help
+          </p>
+          <form className="">
+            <Label
+              htmlFor="name"
+              className="text-[7px] md:text-[10px] lg:text-[15px] xl:text-[20px]"
+            >
+              Name
+            </Label>
+            <Input
+              placeholder="Name"
+              type="text"
+              name="name"
+              className="bg-white bg-opacity-[10%] text-white rounded-none border-none placeholder:text-slate-300 text-[7px] md:text-[10px] lg:text-[15px] h-[3em]"
+            />
+            <Label
+              htmlFor="email"
+              className="text-[7px] md:text-[10px] lg:text-[15px] xl:text-[20px]"
+            >
+              Email
+            </Label>
+            <Input
+              placeholder="Email"
+              type="email"
+              name="name"
+              className="bg-white bg-opacity-[10%] text-white rounded-none border-none placeholder:text-slate-300 text-[7px] md:text-[10px] lg:text-[15px] h-[3em]"
+            />
+            <Label
+              htmlFor="message"
+              className="text-[7px] md:text-[10px] lg:text-[15px] xl:text-[20px]"
+            >
+              Message
+            </Label>
+            <Textarea
+              placeholder="Message"
+              name="message"
+              className="bg-white bg-opacity-[10%] text-white rounded-none border-none placeholder:text-slate-300 text-[7px] md:text-[10px] lg:text-[15px] h-[3em] mb-4"
+            />
+            <Button
+              variant="gaming"
+              type="submit"
+              className="flex-1 font-extrabold bg-[#0BDB45] text-center rounded-none cursor-pointer w-full text-black h-[3em] text-[7px] md:text-[10px] lg:text-[15px] lg:w-1/2"
+            >
+              SEND
+            </Button>
+          </form>
+        </div>
+
+        <div className="hidden lg:block absolute inset-x-0 bottom-0 ml-[400px] xl:ml-[500px] 2xl:ml-[600px] lg:w-1/2 xl:w-3/6 2xl:w-2/5 z-20">
+          <Image src={Avatar} alt="Avatar" className="object-cover mx-auto" />
+        </div>
+      </div>
+    </div>
   );
 }
