@@ -20,7 +20,7 @@ export default function Footer() {
   return (
     <section className="bg-[#0B0E13] font-primaryFont text-white text-[7px] pt-[3em] pb-[2em] sm:text-[9px] md:text-[11px] lg:text-[13px] xl:text-[14px] 2xl:text-[15px]">
       {/* main container */}
-      <div className="container mx-auto px-[36px]">
+      <div className="container mx-auto px-[36px] md:px-px">
         {/* Newsletter div */}
         <div
           className="newsletter-div bg-[#2D2E37] flex items-center justify-between px-[11px] py-[1em] mb-[3em] xl:mb-[4em]"
